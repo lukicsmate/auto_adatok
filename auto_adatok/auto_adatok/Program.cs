@@ -107,6 +107,16 @@ namespace auto_adatok
                                     cmd.Parameters["@márkaérték"].Value = márka;
                                     cmd.ExecuteNonQuery();
                                 }
+                                cmd.CommandText = "SELECT TipusID FROM TIPUS WHERE @Tiipus = TipusNév";
+                                cmd.Parameters["@Tiipus"].Value = tipus;
+                                var cmdexecute = cmd.ExecuteReader();
+                                bool found = cmdexecute.Read();
+                                if (!found)
+                                {
+                                    cmd.CommandText = "INSERT INTO TIPUS(TipusNév) VALUES(@Tiipusérték)";
+                                    cmd.Parameters["@Tiipusérték"].Value = tipus;
+                                    cmd.ExecuteNonQuery();
+                                }
 
 
 
