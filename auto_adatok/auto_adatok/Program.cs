@@ -10,6 +10,8 @@ namespace auto_adatok
     {
         static void Main(string[] args)
         {
+
+
         }
     }
 }
